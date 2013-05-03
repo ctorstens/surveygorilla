@@ -21,7 +21,7 @@ end
 
 questions = Question.all
 1000.times do
-  Option.create(question_id: questions.sample.id, choice: ('a'..'d').to_a.sample)
+  Option.create(question_id: questions.sample.id, choice: Faker::Company.name)
 end
 
 options = Option.all
