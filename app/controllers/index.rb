@@ -1,5 +1,5 @@
 before do
-  @current_user = current_user
+  @current_user = nil #current_user
 end
 
 get '/' do
