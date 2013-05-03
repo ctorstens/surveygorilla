@@ -1,14 +1,9 @@
 <div class="survey">
   <form action="">
-    <p> 
-      <input id="survey-title" name="survey[title]" required="required" type="text" placeholder="Untitled form" />
-    </p>
-    <p> 
-      <input id="survey-description" name="survey[description]" required="required" type="text" placeholder="Form Description"/> 
-    </p>
-    <p> 
-    </p>
-
+    <%= partial(:_survey_head) %>
+    <div class="widget-container">
+      <%= partial(:_survey_question_mcq) %>
+    </div>
   </form>
 </div>
 

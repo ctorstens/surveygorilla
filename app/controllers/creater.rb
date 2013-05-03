@@ -4,12 +4,12 @@ get '/profile' do
 end
 
 post '/survey' do
-
-	redirect to('/survey/#{survey.token}')
+  survey = Survey.create(token: "abcd")
+	redirect to("/survey/#{survey.token}")
 end
 
 get '/survey/:token' do
-
+  @survey = Survey.find_by_token(params[:token])
 	erb :survey
 end
 

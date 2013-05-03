@@ -3,6 +3,7 @@ class CreateOptions < ActiveRecord::Migration
     create_table :options do |t|
       t.text :choice
       t.references :question
+      t.timestamps
     end
   end
 end

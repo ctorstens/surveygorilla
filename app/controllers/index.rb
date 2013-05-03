@@ -3,13 +3,13 @@ before do
 end
 
 get '/' do
-
+  redirect to('/profile') if @current_user
   erb :index
 end
 
 get '/signin' do
   user = User.authenticate(params[:signin][:email], params[:signin][:password])
-  if user 
+  if user
     session[:id] = user.id
   else
     "Invalid login"
@@ -17,7 +17,7 @@ get '/signin' do
   redirect to('/profile')
 end
 
-post '/signup' do 
+post '/signup' do
   user = User.new(params[:signup])
   if user.save
     session[:id] = user.id
