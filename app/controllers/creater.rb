@@ -1,5 +1,5 @@
 get '/profile' do
-
+  @surveys = @current_user.surveys
 	erb :profile
 end
 

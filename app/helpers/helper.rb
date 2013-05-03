@@ -5,8 +5,8 @@ helpers do
     end
   end
 
-  def partial(template, locals = {})
-    erb(template, :layout => false, :locals => locals)
+  def partial(template,layout=false,locals = {})
+    erb(template, :layout => layout, :locals => locals)
   end
 
   def formate_date(date)

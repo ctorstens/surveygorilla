@@ -1,5 +1,5 @@
 before do
-  @current_user = nil #current_user
+  @current_user = current_user
 end
 
 get '/' do
@@ -27,8 +27,8 @@ post '/signup' do
   end
 end
 
-post '/logout' do
-  session[:id] = nil
+get '/logout' do
+  session.clear
   redirect '/'
 end
 
