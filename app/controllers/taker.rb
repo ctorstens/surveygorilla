@@ -4,5 +4,6 @@ get '/view/:token' do
 end 
 
 post '/view/:token' do
-  # where we show a success notification
+  # where we show a success notification?
+  redirect to('/profile')
 end

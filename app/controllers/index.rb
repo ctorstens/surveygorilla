@@ -8,17 +8,28 @@ get '/' do
 end
 
 get '/signin' do
-
-	redirect to('/profile')
+  user = User.authenticate(params[:login][:email], params[:login][:password])
+  if user 
+    session[:id] = @user.id
+  else
+    "Invalid login"
+  end
+  redirect to('/profile')
 end
 
 post '/signup' do 
-
-	redirect to('/profile')
+  user = User.new(params[:signup])
+  if user.save
+    session[:id] = user.id
+    redirect to('/profile')
+  else
+    # errors here
+  end
 end
 
 post '/logout' do
-
+  session[:id] = nil
+  redirect '/'
 end
 
 
