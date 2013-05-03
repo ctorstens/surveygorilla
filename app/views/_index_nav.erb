@@ -1,0 +1,17 @@
+<div class="nav">
+  <div id="title">
+    <a href="/"><h1>Survey Gorilla</h1></a>
+  </div>
+  <nav class="navlist">
+
+<% unless @current_user %>
+  <div id="nav-signin"><form action="/" method="post">
+      <input type="text" name="signin[email]" placeholder="Email"></input>
+      <input type="password" name="signin[password]"></input>
+      <input type="submit" value="Submit"></input>
+    </form></div>
+  <% else %>
+    <div id="nav-signin">Create a survey<%= "Hi, #{@current_user.username}"%></div>
+  <% end %>
+  </nav>
+</div>
