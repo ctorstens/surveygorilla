@@ -4,8 +4,13 @@ class User < ActiveRecord::Base
 	has_many :surveys
 	has_many :completions
 	has_many :responses
+	before_create :generate_token
 
 	include BCrypt
+
+	def generate_token
+		self.token = SecureRandom.hex(4)
+	end
 
 	def password
 		@password ||= Password.new(password_hash)

@@ -2,12 +2,12 @@ letters = ('a'..'z').to_a
 
 User.create(username: "test", email: "test@dbc.com", password: "password", token: "123");
 20.times do
-  User.create(username: Faker::Internet.user_name, email: Faker::Internet.email, password: Faker::Lorem.word, token: letters.sample(4).join)
+  User.create(username: Faker::Internet.user_name, email: Faker::Internet.email, password: Faker::Lorem.word)
 end
 
 users = User.all
 100.times do
-  Survey.create(user_id: users.sample.id, title: Faker::Lorem.sentence, description: Faker::Lorem.paragraph, token: letters.sample(4).join)
+  Survey.create(user_id: users.sample.id, title: Faker::Lorem.sentence, description: Faker::Lorem.paragraph)
 end
 
 surveys = Survey.all
