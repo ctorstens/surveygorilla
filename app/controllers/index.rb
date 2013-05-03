@@ -8,9 +8,9 @@ get '/' do
 end
 
 get '/signin' do
-  user = User.authenticate(params[:login][:email], params[:login][:password])
+  user = User.authenticate(params[:signin][:email], params[:signin][:password])
   if user 
-    session[:id] = @user.id
+    session[:id] = user.id
   else
     "Invalid login"
   end
