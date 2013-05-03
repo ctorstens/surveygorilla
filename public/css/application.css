@@ -7,3 +7,11 @@
 th {
   text-align: left;
 }
+
+
+
+/*survey creation*/
+#survey-inventory {
+  display: none;
+}
+/*survey creation*/

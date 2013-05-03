@@ -1,10 +1,16 @@
 <div class="survey">
-  <form action="">
-    <%= partial(:_survey_head) %>
+  <form action="/survey/create" method="post">
+    <a id="add_question" href="#">Add a question</a>
+    
+    <%= erb :_survey_head, :layout => false %>
     <div class="widget-container">
-      <%= partial(:_survey_question_mcq) %>
+
     </div>
+    <input id="survey-submit" type="submit" value="Create Form" />
   </form>
 </div>
 
 
+<div id="survey-inventory">
+      <%= erb :_survey_question_mcq, :layout => false %>  
+</div>

@@ -1,6 +1,4 @@
-letters = ('a'..'z').to_a
-
-User.create(username: "test", email: "test@dbc.com", password: "password", token: "123");
+User.create(username: "test", email: "test@dbc.com", password: "password");
 20.times do
   User.create(username: Faker::Internet.user_name, email: Faker::Internet.email, password: Faker::Lorem.word)
 end

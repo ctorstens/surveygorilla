@@ -1,6 +1,6 @@
 get '/view/:token' do 
 
-	erb :survey
+	erb :view
 end 
 
 post '/view/:token' do
