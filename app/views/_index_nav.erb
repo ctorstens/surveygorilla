@@ -4,14 +4,15 @@
   </div>
   <nav class="navlist">
 
-<% unless @current_user %>
-  <div id="nav-signin"><form action="/signin" method="get">
+    <% unless @current_user %>
+    <div id="nav-signin"><form action="/signin" method="get">
       <input type="text" name="signin[email]" placeholder="Email"></input>
       <input type="password" name="signin[password]"></input>
       <input type="submit" value="Submit"></input>
     </form></div>
-  <% else %>
-    <div id="nav-signin">Create a survey<%= "#{@current_user.username}"%></div>
-  <% end %>
-  </nav>
-</div>
+    <% else %>
+    <div id="nav-signin">
+      <form action="/survey" method="Post"><input type="submit" value="Create a survey"></form><%= "#{@current_user.username}"%></div>
+      <% end %>
+    </nav>
+  </div>
