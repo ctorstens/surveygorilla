@@ -11,7 +11,7 @@
       <input type="submit" value="Submit"></input>
     </form></div>
   <% else %>
-    <div id="nav-signin">Create a survey<%= "Hi, #{@current_user.username}"%></div>
+    <div id="nav-signin">Create a survey<%= "#{@current_user.username}"%></div>
   <% end %>
   </nav>
 </div>
