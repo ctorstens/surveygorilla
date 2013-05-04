@@ -8,7 +8,7 @@
     <% @surveys.each do |survey| %>
     <tr>
       <td><%= survey.title %></td>
-      <td><%= formate_date(survey.created_at) %></td>
+      <td><%= format_date(survey.created_at) %></td>
       <td><%= survey.token %></td>
     </tr>
     <% end %>

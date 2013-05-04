@@ -5,11 +5,13 @@ helpers do
     end
   end
 
+  # how to use helper ex:
+  # <%= partial(:_survey_answer_completed, question: question) %>
   def partial(template, locals = {}, layout=false)
     erb(template, :layout => layout, :locals => locals)
   end
 
-  def formate_date(date)
+  def format_date(date)
     date.strftime("%Y/%M/%D %I:%M%p")
   end
 end

@@ -11,10 +11,10 @@ get '/signin' do
   user = User.authenticate(params[:signin][:email], params[:signin][:password])
   if user
     session[:id] = user.id
+    redirect to('/profile')
   else
     "Invalid login"
   end
-  redirect to('/profile')
 end
 
 post '/signup' do
