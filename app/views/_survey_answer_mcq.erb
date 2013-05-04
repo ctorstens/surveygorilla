@@ -1,8 +1,9 @@
-<div class="survey-question-mcq widget">
+<div class="survey-answer-mcq widget">
   <h1><%= locals[:question].title %></h1>
   <ul>
     <% question.options.each do |option| %>
     <li>
+
       <input type="checkbox" name="options[]" value="<%= option.id %>"><%= option.choice%><br>
     </li>
     <%end%>
