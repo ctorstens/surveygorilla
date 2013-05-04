@@ -1,19 +1,17 @@
-<div class="nav">
-  <div id="title">
-    <a href="/"><h1>Survey Gorilla</h1></a>
+<div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="/">Survey Gorilla</a>
+      <% unless @current_user %>
+      <form class="navbar-form pull-right" action="/signin" method="get">
+        <input type="text" name="signin[email]" placeholder="Email" required="required">
+        <input type="password" name="signin[password]" placeholder="Password" required="required">
+        <button type="submit" class="btn">Sign in</button>
+      </form>
+      <% else %>
+      <ul class="nav pull-right">
+        <li><a href="#"><%= "#{@current_user.username}"%></a></li>
+        <li><form class="navbar-form" action="/survey" method="post"><button type="submit" class="btn">Create a survey</button></li>
+      </ul>
+      <% end %>
   </div>
-  <nav class="navlist">
-
-    <% unless @current_user %>
-    <div id="nav-signin"><form action="/signin" method="get">
-      <input type="text" name="signin[email]" placeholder="Email"></input>
-      <input type="password" name="signin[password]"></input>
-      <input type="submit" value="Submit"></input>
-    </form></div>
-    <% else %>
-    <div id="nav-create">
-      <form action="/survey" method="post"><input type="submit" value="Create a survey"></form><%= "#{@current_user.username}"%>
-    </div>
-    <% end %>
-  </nav>
 </div>

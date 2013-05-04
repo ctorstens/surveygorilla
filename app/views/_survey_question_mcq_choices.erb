@@ -1,10 +1,8 @@
 <div class="survey-question-choices mcq-widget">
-  <ol>
-    <li>
-      <input type="text" name="questions[][options][]" placeholder="Options">
-    </li>
-  </ol>
-    <%= erb :_survey_question_foot, :layout => false %>
-
-  <button type="button" id="add-choice" href="#">Add Another Choice</a>
+ 
+<ol>
+  <%= erb :_survey_question_mcq_q, :layout => false %>
+</ol> 
+  <%= erb :_survey_question_foot, :layout => false %>
+  <div class="control-group"><div class="controls"><button class="btn" type="button" id="add-choice">Add Another Choice</Button></div></div>
 </div>

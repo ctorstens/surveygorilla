@@ -1,6 +1,15 @@
 <div id="survey-head">
-  <input id="survey-title" name="survey[title]" required="required" type="text" placeholder="Untitled form" value="Survey title" />
-  <input id="survey-description" name="survey[description]" required="required" type="text" placeholder="Form Description" value="desciprtion"/>
+  <div class="control-group">
+    <div class="controls">
+      <input id="survey-title" name="survey[title]" required="required" type="text" placeholder="Untitled form" value="Survey Title" />
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="controls">
+      <input id="survey-description" name="survey[description]" required="required" type="text" placeholder="Form Description" value="Form Description"/>
+    </div>
+  </div>
   <input id="survey-token" name="survey[token]" type="hidden" value="<%= @survey.token %>">
 </div>
 

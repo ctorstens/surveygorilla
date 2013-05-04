@@ -1,15 +1,5 @@
-/*.container {
-  margin: 20px auto;
-  width: 600px;
-  padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
-}
-th {
-  text-align: left;
-}*/
-
 /*survey creation*/
-.widget-container {
+/*.widget-container {
   width: 500px;
 }
 
@@ -17,6 +7,12 @@ th {
   padding-right: 20%;
   padding-left: 20%;
   width: 80%;
+}*/
+
+.survey-question-mcq ol {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
 
 #survey-inventory {

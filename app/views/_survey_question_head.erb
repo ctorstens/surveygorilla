@@ -1,14 +1,24 @@
 <div class="survey-question-head"> 
-  <li>
-    <input type="text" name="questions[][title]" placeholder="Question1">
-  </li>
-  <li>
-    <input type="text" name="questions[][help_text]" placeholder="help-text">
-  </li>
-  <li>
-    <select name="questions[][type]" class="survey-question-type">
-      <option value="MultipleChoice">Multiple Choice</option>
-      <option value="TextQuestion">Text Question</option>
-    </select>
-  </li>
+  <div class="control-group">
+    <label class="control-label" for="questions[][title]">Question</label>
+    <div class="controls"><input type="text" name="questions[][title]" placeholder="What does SaSS stand for?"></div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="questions[][help_text]">Help Text</label>
+    <div class="controls">
+      <input type="text" name="questions[][help_text]" placeholder="Think in terms of DBC groups">
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="questions[][type]">Question Type</label>  
+    <div class="controls">
+      <select name="questions[][type]" class="survey-question-type">
+        <option value="MultipleChoice">Multiple Choice</option>
+        <option value="TextQuestion">Text Question</option>
+      </select>
+    </div>
+  </div>
+  
 </div>

@@ -1,9 +1,11 @@
-<div class="survey">
+<div class="survey container">
   <form action="/survey/create" method="post">
-    <%= erb :_survey_head, :layout => false %>
-    <div class="widget-container"></div>
-      <button type="button" id="add_question" href="#">Add a question</button></br></br>
-      <input id="survey-submit" type="submit" value="Create Form" />
+    <div class="form-horizontal">
+      <%= erb :_survey_head, :layout => false %>
+      <div class="widget-container"></div>
+      <div class="control-group"><div class="controls"><button class="btn" id="add_question" type="button">Add a question</button></div></div>
+      <div class="controls"><button class="btn" id="survey-submit" type="submit">Create Form</button></div>
+    </div>
   </form>
 </div>
 
@@ -11,6 +13,6 @@
 <div id="survey-inventory">
   <%= erb :_survey_question_mcq, :layout => false %>  
   <%= erb :_survey_question_mcq_q, :layout => false %>
-    <%= erb :_survey_question_mcq_choices, :layout => false %>
+  <%= erb :_survey_question_mcq_choices, :layout => false %>
   <%= erb :_survey_question_tq_choices, :layout => false %> 
 </div>

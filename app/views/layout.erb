@@ -10,20 +10,21 @@
   <!--
     application.css is where you put your styles
   -->
+  <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  
   <link rel="stylesheet" href="/css/application.css">
-  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-  <script src="http://code.jquery.com/jquery.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="/js/application.js"></script>
-  <script>
-  </script>
 
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/application.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   <title></title>
-  <%= erb :_index_nav, :layout => false %>
 </head>
 <body>
+  <%= erb :_index_nav %>
   <%= yield %>
 </body>
+
+
 </html>
