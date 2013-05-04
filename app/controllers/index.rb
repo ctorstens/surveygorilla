@@ -32,3 +32,12 @@ get '/logout' do
   redirect '/'
 end
 
+get '/test' do
+  p params
+  erb :test
+end
+
+post '/test' do
+  p params
+  redirect to('/test')
+end

@@ -1,14 +1,18 @@
 <div class="survey">
   <form action="/survey/create" method="post">
-    <a id="add_question" href="#">Add a question</a>
-    
+
+
     <%= erb :_survey_head, :layout => false %>
     <div class="widget-container"></div>
-    <input id="survey-submit" type="submit" value="Create Form" />
+      <a id="add_question" href="#">Add a question</a></br></br>
+      <input id="survey-submit" type="submit" value="Create Form" />
   </form>
 </div>
 
 
 <div id="survey-inventory">
   <%= erb :_survey_question_mcq, :layout => false %>  
+  <%= erb :_survey_question_mcq_q, :layout => false %>
+    <%= erb :_survey_question_mcq_choices, :layout => false %>
+  <%= erb :_survey_question_tq_choices, :layout => false %> 
 </div>

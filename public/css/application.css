@@ -8,10 +8,26 @@ th {
   text-align: left;
 }
 
-
-
 /*survey creation*/
+.widget-container {
+  width: 500px;
+}
+
+.widget-container .widget{
+  padding-right: 20%;
+  padding-left: 20%;
+  width: 80%;
+}
+
 #survey-inventory {
   display: none;
+}
+
+div.survey .selected {
+  background-color: red;
+}
+
+div.survey .unselected {
+  background-color: white;
 }
 /*survey creation*/
