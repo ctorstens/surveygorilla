@@ -1,6 +1,7 @@
 class Survey < ActiveRecord::Base
   belongs_to :user
   has_many :questions
+  has_many :multiple_choices
   has_many :completions
   before_create :generate_token
 
@@ -8,3 +9,4 @@ class Survey < ActiveRecord::Base
     self.token = SecureRandom.hex(4)
   end
 end
+

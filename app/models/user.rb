@@ -2,8 +2,7 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
 	has_many :surveys
-	has_many :completions
-	has_many :responses
+	has_many :completions, foreign_key: "taker_id"
 	before_create :generate_token
 
 	include BCrypt
