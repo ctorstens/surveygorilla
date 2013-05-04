@@ -6,9 +6,10 @@
           <%= partial(:_survey_answer_completed, question: question) %>
         <% else %>
           <%= partial(:_survey_answer, question: question) %>
-          <input type='submit' value='Done'/>
         <% end %>
-        
+      <% end %>
+      <% unless @completed %>
+        <input type='submit' value='Done'/>
       <% end %>
     </div>
   </form>
