@@ -23,11 +23,11 @@ post '/survey/create' do
   p survey
   questions = params[:questions]
   questions.each do |question|
-    new_question = survey.questions.create(title: question["title"], help_text: question["help_text"], type: question["type"], required: question["required"])
+    new_question = survey.questions.create(title: question["title"], help_text: question["help_text"], type: question["type"], required: question["required"], position: question["position"])
     if new_question.type == "MultipleChoice"
-      new_question = MultipleChoice.find(new_question.id) 
+      new_question = MultipleChoice.find(new_question.id)
       options = question["options"]
-      options.each { |option| new_question.options.create(choice: option) }    
+      options.each { |option| new_question.options.create(choice: option) }
     end
   end
   redirect to('/profile')
@@ -43,4 +43,4 @@ end
     # p params[:questions]
     # p question["type"]
     # p new_question
-    # 
+    #

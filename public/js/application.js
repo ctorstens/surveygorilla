@@ -1,4 +1,10 @@
 $(document).ready(function() {
+  $('form').on('submit',function(){
+    var numOfQuestions= $('div.widget-container').children().length;
+    for (var i=0; i<numOfQuestions; i++) {
+      $('div.widget-container').children().eq(i).find('.survey-question-position').val((i+1));
+    }
+  });
 
   $(function() {
     $( ".widget-container" ).sortable();

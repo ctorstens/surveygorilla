@@ -1,9 +1,10 @@
-<div class="survey-question-choices mcq-widget"> 
-  <ol>  
+<div class="survey-question-choices mcq-widget">
+  <ol>
     <li>
       <input type="text" name="questions[][options][]" placeholder="Options">
     </li>
   </ol>
-  <input type="checkbox" name="questions[][required]" value="true">Required Question<br>
+    <%= erb :_survey_question_foot, :layout => false %>
+
   <a id="add-choice" href="#">Add Another Choice</a>
 </div>
