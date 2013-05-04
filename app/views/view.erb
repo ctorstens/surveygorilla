@@ -5,7 +5,7 @@
         <%= "You completed this survey already." %>
       <% else %>
         <%@questions.each do |question|%>
-        <%= partial(:_survey_answer_mcq, question: question) %>
+        <%= partial(:_survey_answer, question: question) %>
         <% end %>
         <input type='submit' value='Done'/>
       <% end %>

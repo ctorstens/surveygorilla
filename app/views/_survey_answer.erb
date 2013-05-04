@@ -4,10 +4,13 @@
     <% if question.type == "MultipleChoice" %>
       <% question.options.each do |option| %>
       <li>
-
         <input type="checkbox" name="options[<%= question.id %>]" value="<%= option.id %>"><%= option.choice%><br>
       </li>
       <%end%>
+    <% else %>
+      <li>
+        <input type="text" name="answers[<%= question.id %>]">
+      </li>
     <%end%>
   </ul>
 </div>
