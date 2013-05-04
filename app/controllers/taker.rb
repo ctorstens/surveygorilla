@@ -1,8 +1,8 @@
 get '/view/:token' do 
   @survey = Survey.find_by_token(params[:token])
-  @questions = @survey.questions
-  @completed = Completion.where("taker_id = ? AND survey_id = ?", current_user.id, @survey.id).any?
-
+  @questions = @survey.questions.order('position')
+  @completion = Completion.where("taker_id = ? AND survey_id = ?", current_user.id, @survey.id)
+  @completed = @completion.any?
 	erb :view
 end 
 

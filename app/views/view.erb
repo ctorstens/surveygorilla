@@ -1,13 +1,14 @@
 <div class="survey">
   <form action="/view/<%= @survey.token %>" method='POST'>
     <div class="widget-container">
-      <% if @completed %>
-        <%= "You completed this survey already." %>
-      <% else %>
-        <%@questions.each do |question|%>
-        <%= partial(:_survey_answer, question: question) %>
+      <%@questions.each do |question|%>
+        <% if @completed %>
+          <%= partial(:_survey_answer_completed, question: question) %>
+        <% else %>
+          <%= partial(:_survey_answer, question: question) %>
+          <input type='submit' value='Done'/>
         <% end %>
-        <input type='submit' value='Done'/>
+        
       <% end %>
     </div>
   </form>
