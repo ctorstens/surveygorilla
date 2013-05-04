@@ -21,12 +21,12 @@ $(document).ready(function() {
     e.preventDefault();
     unselectAll('div.survey .widget');
     hideFirstShowSecond('div.survey .unselected.widget #add-choice','div.survey .selected.widget #add-choice');
-    addItemTo('#survey-inventory > .survey-question-mcq','.widget-container');
+    addItemTo('#survey-inventory > .survey-question','.widget-container');
   });
 
   $('div.survey').on('click','button#add-choice',function(e){
     e.preventDefault();
-    addItemTo('#survey-inventory > .survey-question-mcq-q','.widget-container .selected.survey-question-mcq ol');
+    addItemTo('#survey-inventory > .survey-question-mcq-q','.widget-container .selected.survey-question ol');
   });
 
   $('div.survey').on('change','.survey-question-type', function(){
