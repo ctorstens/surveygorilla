@@ -5,7 +5,7 @@ helpers do
     end
   end
 
-  def partial(template,layout=false,locals = {})
+  def partial(template, locals = {}, layout=false)
     erb(template, :layout => layout, :locals => locals)
   end
 

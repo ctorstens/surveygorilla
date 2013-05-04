@@ -1,0 +1,10 @@
+<div class="survey">
+  <form action="/view/<%= @survey.token %>" method='POST'>
+    <div class="widget-container">
+      <%@questions.each do |question|%>
+      <%= partial(:_survey_question_mcq, question: question) %>
+      <% end %>
+    </div>
+    <input type='submit' value='Done'/>
+  </form>
+</div>
