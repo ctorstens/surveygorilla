@@ -1,4 +1,10 @@
 $(document).ready(function() {
+
+  $(function() {
+    $( ".widget-container" ).sortable();
+    $( ".widget-container" ).disableSelection();
+  });
+
   $('div.survey').on('click',".widget", function(){
     unselectAll('div.survey .widget');
     selectAll(this);

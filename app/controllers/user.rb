@@ -23,7 +23,7 @@ post '/survey/create' do
   p survey
   questions = params[:questions]
   questions.each do |question|
-    new_question = survey.questions.create(title: question["title"], help_text: question["help_text"], type: question["type"])
+    new_question = survey.questions.create(title: question["title"], help_text: question["help_text"], type: question["type"], required: question["required"])
     if new_question.type == "MultipleChoice"
       new_question = MultipleChoice.find(new_question.id) 
       options = question["options"]
