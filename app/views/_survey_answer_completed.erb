@@ -1,1 +1,14 @@
-_survey_answer_completed.erb
+<div class="survey-answer-mcq widget">
+  <h3>Question: <%= locals[:question].title %></h3>
+    <ul>
+    <% if question.type == "MultipleChoice" %>
+      <li>
+        Answer: <%= question.responses.first.option.choice %>
+      </li>
+    <% else %>
+      <li>
+        Answer: <%= question.responses.first.answer %>
+      </li>
+    <%end%>
+  </ul>
+</div>
