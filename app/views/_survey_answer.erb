@@ -1,16 +1,13 @@
 <div class="survey-answer-mcq widget">
-  <h1><%= locals[:question].title %></h1>
-  <ul>
-    <% if question.type == "MultipleChoice" %>
-      <% question.options.each do |option| %>
-      <li>
-        <input type="checkbox" name="options[<%= question.id %>]" value="<%= option.id %>"><%= option.choice%><br>
-      </li>
-      <%end%>
-    <% else %>
-      <li>
-        <input type="text" name="answers[<%= question.id %>]">
-      </li>
+  <% question.required ? required = "required" : required = "" %>
+  <p class="text-warning"><%= "*required" if question.required %></p>
+  <% if question.type == "MultipleChoice" %>
+    <% question.options.each do |option| %>
+      <label class="radio">
+        <input type="radio" name="options[<%= question.id %>]" value="<%= option.id %>" <%= required %>><%= option.choice %>
+      </label>
     <%end%>
-  </ul>
+  <% else %>
+    <input type="text" name="answers[<%= question.id %>]" <%= required %>>
+  <%end%>
 </div>

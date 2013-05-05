@@ -1,14 +1,16 @@
 <div class="survey-answer-mcq widget">
-  <h3>Question: <%= locals[:question].title %></h3>
-    <ul>
     <% if question.type == "MultipleChoice" %>
-      <li>
-        Answer: <%= question.responses.first.option.choice %>
-      </li>
+        <% if question.responses.first %>
+          Response: <%= question.responses.first.option.choice %>
+        <% else %>
+          <p>Response: Unanswered</p>
+        <%end %>
     <% else %>
-      <li>
-        Answer: <%= question.responses.first.answer %>
-      </li>
+        <% if question.responses.first.answer.empty? %>
+          <p>Response: Unanswered</p>
+        <% else %>
+          <p>Response: <%= question.responses.first.answer %></p>
+        <% end %>
     <%end%>
-  </ul>
 </div>
+
