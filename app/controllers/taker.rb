@@ -1,6 +1,7 @@
 
 
 get '/view/:token' do 
+  authorize! :read, Survey
   @survey = Survey.find_by_token(params[:token])
   @questions = @survey.questions.order('position')
   @completion = Completion.where("taker_id = ? AND survey_id = ?", current_user.id, @survey.id)

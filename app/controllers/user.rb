@@ -1,15 +1,12 @@
-require_relative "../models/ability"
-
-# ability do |user|
-#   can :update, Survey do |survey|
-#     survey.try(:user) == user
-#   end
-# end
+# require_relative "../models/ability"
 
 
 get '/profile' do
+  p "profile"
   @surveys = @current_user.surveys
   @live_surveys = @surveys.select { |survey| survey.live == true }
+  p "profile"
+  p @live_surveys
   @draft_surveys = @surveys.select { |survey| survey.live != true }
   erb :profile
 end
@@ -63,6 +60,13 @@ post '/edit' do
 
 end
 
+
+get '/launch/:token' do
+  survey = Survey.find_by_token(params[:token])
+  survey.live = true
+  survey.save
+  redirect to('/profile')
+end
     # p params
     # p params[:questions]
     # p question["type"]

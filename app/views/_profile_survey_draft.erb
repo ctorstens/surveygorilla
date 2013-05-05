@@ -14,7 +14,7 @@
       <td><a href="/edit/<%= survey.token %>"><%= survey.title %></a></td>
       <td><%= format_date(survey.created_at) %></td>
       <td><%= time_ago_in_words(survey.updated_at) %></td>
-      <td></td>
+      <td><form method="put" action="/launch/<%= survey.token %>"><button class="btn" type="submit">Launch</button></form></td>
     </tr>
     <% end %>
   </table>
