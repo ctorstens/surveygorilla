@@ -15,8 +15,13 @@ body  {
 <div class="row form-effects view-form span8 offset2">
     <form class="offset1" action="/view/<%= @survey.token %>" method='POST'>
     <div class="widget-container">
-      <%@questions.each do |question|%>
+      <div class="survey-title">
+        <h2><%= @survey.title %> </h2>
+        <p><%= @survey.description %></p>
+      </div>
+        <%@questions.each do |question|%>
         <h4><%= "#{question.position}. #{question.title}" %></h4>
+        <p><%= "#{question.help_text}"%></p>
         <% if @completed %>
           <%= partial(:_survey_answer_completed, question: question) %>
         <% else %>
