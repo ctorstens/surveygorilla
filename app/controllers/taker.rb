@@ -5,11 +5,13 @@ get '/view/:token' do
   if @survey.live == false
     redirect to(404)
   else
-  @questions = @survey.questions.order('position')
-  @completion = Completion.where("taker_id = ? AND survey_id = ?", current_user.id, @survey.id)
-  @completed = @completion.any?
-	erb :view
-end
+    @questions = @survey.questions.order('position')
+    if current_user
+      @completion = Completion.where("taker_id = ? AND survey_id = ?", current_user.id, @survey.id)
+      @completed = @completion.any?
+    end
+  	erb :view
+  end
 end 
 
 post '/view/:token' do

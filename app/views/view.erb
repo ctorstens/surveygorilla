@@ -12,31 +12,39 @@ body  {
 </style>
 
 <div class="container">
-<div class="row form-effects view-form span10 offset1">
-    <form class="span7 offset1" action="/view/<%= @survey.token %>" method='POST'>
-    <div>
-      <div class="survey-title">
-        <h2><%= @survey.title %> </h2>
-        <p><%= @survey.description %></p></br>
+  <div class="row form-effects view-form span10 offset1">
+      <form class="span7 offset1" action="/view/<%= @survey.token %>" method='POST'>
+      <div>
+        <div class="survey-title">
+          <h2><%= @survey.title %> </h2>
+          <p><%= @survey.description %></p></br>
+        </div>
+          <%@questions.each do |question|%>
+          <h4><%= "#{question.position}. #{question.title}" %></h4>
+            <p><%= "#{question.help_text}"%></p>
+            <% if current_user %>
+              <% if @completed%>
+                <%= partial(:_survey_answer_completed, question: question) %>
+              <% else %>
+                <%= partial(:_survey_answer, question: question) %>
+              <% end %>
+            <% else %>
+                <%= partial(:_survey_answer, question: question) %>
+            <% end %>
+            <br><br>
+          <% end %>
+
+          <% if current_user %>
+            <% unless @completed %>
+              <input name="submit-user" class="btn btn-primary offset5" type='submit' value='Done'/>
+            <% end %>
+          <% else %>
+            <input name="submit-visitor" class="btn btn-primary offset5" type='submit' value='Done'/>
+          <% end %>
+
       </div>
-        <%@questions.each do |question|%>
-        <h4><%= "#{question.position}. #{question.title}" %></h4>
-        <p><%= "#{question.help_text}"%></p>
-        <% if can? :update, @survey && @survey.live == false%>
-          <%= partial(:_survey_answer, question: question) %>
-          <button type="button" class="btn btn-success">Edit</button>
-        <% elsif @completed%>
-          <%= partial(:_survey_answer_completed, question: question) %>
-        <% else %>
-          <%= partial(:_survey_answer, question: question) %>
-        <% end %>
-        <br><br>
-      <% end %>
-      <% unless @completed %>
-        <input class="btn btn-primary offset5" type='submit' value='Done'/>
-      <% end %>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>
-</div>
+
 
