@@ -27,6 +27,14 @@
 
 }
 
+div.survey .selected > .survey-question-remove {
+  display: inline;
+}
+
+div.survey .unselected > .survey-question-remove {
+  display:none;
+}
+
 div.survey .selected {
   background-color: #ebebeb;
   border-radius: 10px;
@@ -38,6 +46,7 @@ div.survey .selected {
 div.survey .unselected {
   background-color: #FFF;
 }
+
 /*survey creation*/
 
 /* box shadow effects */

@@ -1,4 +1,11 @@
 $(document).ready(function() {
+    $('button#copy-button').zclip({
+        path:'/js/ZeroClipboard.swf',
+        copy:('fasf')
+    });
+
+
+
   $('form').on('submit',function(){
     var numOfQuestions= $('div.widget-container').children().length;
     for (var i=0; i<numOfQuestions; i++) {
@@ -11,6 +18,12 @@ $(document).ready(function() {
   $(function() {
     $( ".widget-container" ).sortable();
     $( ".widget-container" ).disableSelection();
+  });
+
+  $('div.survey').on('click', ".selected > .survey-question-remove",function(){
+    $(this).parent().fadeOut('fast', function(){
+      $(this).remove();
+    });
   });
 
   $('div.survey').on('click',".widget", function(){
@@ -38,23 +51,29 @@ $(document).ready(function() {
       findSelectorFindCloestFindChildrenReplaceWith(this,'div.widget', '.survey-question-choices', '#survey-inventory > .tq-widget');
     }
   });
+
+
+
+
+
+
 });
 
 
 
 function findSelectorFindCloestFindChildrenReplaceWith(selector, cloestParent, childSelector,replaceWith){
-    $(selector).closest(cloestParent).children(childSelector).replaceWith($(replaceWith).clone());
+  $(selector).closest(cloestParent).children(childSelector).replaceWith($(replaceWith).clone());
 }
 
 function addItemTo(inventory, appendTo) {
-    $(inventory).clone().hide().appendTo(appendTo).slideToggle('fast');
+  $(inventory).clone().hide().appendTo(appendTo).slideToggle('fast');
 }
 
 function unselectAll(selector){
   $(selector).removeClass('selected').addClass('unselected');
 }
 function selectAll(selector){
-    $(selector).removeClass('unselected').addClass('selected');
+  $(selector).removeClass('unselected').addClass('selected');
 }
 
 function hideFirstShowSecond(hideSelector,showSelector){
