@@ -1,6 +1,10 @@
-ability do |user|
-  can :edit, :survey
-end
+require_relative "../models/ability"
+
+# ability do |user|
+#   can :update, Survey do |survey|
+#     survey.try(:user) == user
+#   end
+# end
 
 
 get '/profile' do

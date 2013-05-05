@@ -12,12 +12,12 @@ body  {
 </style>
 
 <div class="container">
-<div class="row form-effects view-form span8 offset2">
-    <form class="offset1" action="/view/<%= @survey.token %>" method='POST'>
+<div class="row form-effects view-form span10 offset1">
+    <form class="span7 offset1" action="/view/<%= @survey.token %>" method='POST'>
     <div class="widget-container">
       <div class="survey-title">
         <h2><%= @survey.title %> </h2>
-        <p><%= @survey.description %></p>
+        <p><%= @survey.description %></p></br>
       </div>
         <%@questions.each do |question|%>
         <h4><%= "#{question.position}. #{question.title}" %></h4>

@@ -1,3 +1,5 @@
+
+
 get '/view/:token' do 
   @survey = Survey.find_by_token(params[:token])
   @questions = @survey.questions.order('position')
