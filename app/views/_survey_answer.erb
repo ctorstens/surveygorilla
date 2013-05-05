@@ -1,7 +1,4 @@
 <div class="survey-answer-mcq widget">
-  <% if can? :update, @survey %>
-    <p>edit</p>
-  <% end %>
   <% question.required ? required = "required" : required = "" %>
   <p class="text-warning"><%= "*required" if question.required %></p>
   <% if question.type == "MultipleChoice" %>
