@@ -1,5 +1,7 @@
 get '/profile' do
   @surveys = @current_user.surveys
+  @live_surveys = @surveys.select { |survey| survey.live == true }
+  @draft_surveys = @surveys.select { |survey| survey.live != true }
   erb :profile
 end
 

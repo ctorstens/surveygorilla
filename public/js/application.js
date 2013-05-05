@@ -6,6 +6,8 @@ $(document).ready(function() {
     }
   });
 
+  $("#survey-date-picker").datepicker();
+
   $(function() {
     $( ".widget-container" ).sortable();
     $( ".widget-container" ).disableSelection();

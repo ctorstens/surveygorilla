@@ -5,7 +5,7 @@ class CreateSurveys < ActiveRecord::Migration
       t.string :title
       t.text :description
       t.string :token
-      t.boolean :live
+      t.boolean :live, :default => false
       t.datetime :expiry_date
       t.timestamps
     end
