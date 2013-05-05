@@ -1,3 +1,8 @@
+ability do |user|
+  can :edit, :survey
+end
+
+
 get '/profile' do
   @surveys = @current_user.surveys
   @live_surveys = @surveys.select { |survey| survey.live == true }
