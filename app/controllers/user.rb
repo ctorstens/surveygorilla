@@ -61,14 +61,9 @@ post '/edit' do
 end
 
 
-get '/launch/:token' do
+get '/launch' do
   survey = Survey.find_by_token(params[:token])
   survey.live = true
   survey.save
   redirect to('/profile')
 end
-    # p params
-    # p params[:questions]
-    # p question["type"]
-    # p new_question
-    #

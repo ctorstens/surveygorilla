@@ -1,12 +1,13 @@
 <div class="survey">
   <table class="table table-striped table-bordered table-hover box-shadow">
+    <form method="put" action="/launch">
     <tr>Draft Surveys</tr>
     <tr>
       <td>#</td>
-      <td class="span7">Survey Title</td>
+      <td class="span6">Survey Title</td>
       <td>Created at</td>
       <td>Modified</td>
-      <td>Finalise!</td>
+      <td>Go!</td>
     </tr>
     <% @draft_surveys.each_with_index do |survey, index| %>
     <tr>
@@ -14,8 +15,9 @@
       <td><a href="/edit/<%= survey.token %>"><%= survey.title %></a></td>
       <td><%= format_date(survey.created_at) %></td>
       <td><%= time_ago_in_words(survey.updated_at) %></td>
-      <td><form method="put" action="/launch/<%= survey.token %>"><button class="btn" type="submit">Launch</button></form></td>
+      <td><button class="btn" type="submit" name="token" value="<%= survey.token %>">Launch</button></td>
     </tr>
     <% end %>
+    </form>
   </table>
 </div>
