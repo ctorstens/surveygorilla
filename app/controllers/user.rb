@@ -16,6 +16,7 @@ end
 
 #refactor later to transform the form of the object
 post '/survey/create' do
+  p "test"
   survey = Survey.find_by_token(params[:survey][:token])
   params[:survey][:user] = @current_user
   p params
@@ -30,6 +31,7 @@ post '/survey/create' do
       options.each { |option| new_question.options.create(choice: option) }
     end
   end
+
   redirect to('/profile')
 end
 
@@ -37,7 +39,12 @@ get '/profile/:token' do
   erb :detail
 end
 
-
+get '/analytics/:token' do
+  @survey = Survey.find_by_token(params[:token])
+  @mcq = @survey.multiple_choices
+  @tq = @survey.text_questions
+  erb :analytics
+end
 
     # p params
     # p params[:questions]
