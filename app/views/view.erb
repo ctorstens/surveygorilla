@@ -1,16 +1,17 @@
-<div class="survey">
-  <form action="/view/<%= @survey.token %>" method='POST'>
-    <div class="widget-container">
-      <%@questions.each do |question|%>
-        <% if @completed %>
-          <%= partial(:_survey_answer_completed, question: question) %>
-        <% else %>
-          <%= partial(:_survey_answer, question: question) %>
-        <% end %>
+<form class="span8" action="/view/<%= @survey.token %>" method='POST'>
+  <div class="widget-container">
+    <%@questions.each do |question|%>
+      <h4><%= "#{question.position}. #{question.title}" %></h4>
+      <% if @completed %>
+        <%= partial(:_survey_answer_completed, question: question) %>
+      <% else %>
+        <%= partial(:_survey_answer, question: question) %>
       <% end %>
-      <% unless @completed %>
-        <input type='submit' value='Done'/>
-      <% end %>
-    </div>
-  </form>
-</div>
+      <br><br>
+    <% end %>
+    <% unless @completed %>
+      <input class="btn" type='submit' value='Done'/>
+    <% end %>
+  </div>
+</form>
+
