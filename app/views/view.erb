@@ -1,17 +1,34 @@
-<form class="span8" action="/view/<%= @survey.token %>" method='POST'>
-  <div class="widget-container">
-    <%@questions.each do |question|%>
-      <h4><%= "#{question.position}. #{question.title}" %></h4>
-      <% if @completed %>
-        <%= partial(:_survey_answer_completed, question: question) %>
-      <% else %>
-        <%= partial(:_survey_answer, question: question) %>
+<style type="text/css">
+body  {
+  background-color: #ebebeb;
+}
+.view-form {
+  padding-top: 50px;
+  background-color: #FFF;
+  margin-bottom: 100px;
+  border-radius: 10px;
+}
+
+</style>
+
+<div class="container">
+<div class="row form-effects view-form span8 offset2">
+    <form class="offset1" action="/view/<%= @survey.token %>" method='POST'>
+    <div class="widget-container">
+      <%@questions.each do |question|%>
+        <h4><%= "#{question.position}. #{question.title}" %></h4>
+        <% if @completed %>
+          <%= partial(:_survey_answer_completed, question: question) %>
+        <% else %>
+          <%= partial(:_survey_answer, question: question) %>
+        <% end %>
+        <br><br>
       <% end %>
-      <br><br>
-    <% end %>
-    <% unless @completed %>
-      <input class="btn" type='submit' value='Done'/>
-    <% end %>
-  </div>
-</form>
+      <% unless @completed %>
+        <input class="btn btn-primary offset5" type='submit' value='Done'/>
+      <% end %>
+    </div>
+  </form>
+</div>
+</div>
 

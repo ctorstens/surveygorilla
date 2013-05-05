@@ -13,7 +13,7 @@
       <% mcq.options.each do |option|  %>
       <tr>
         <td><%= option.choice %></td>
-        <% response_percent = (option.responses.count/total_responses.to_f)*100 %>
+        <% response_percent = ((option.responses.count/total_responses.to_f)*100).round(1) %>
         <td>
           <div class="progress">
             <div class="bar" style="width: <%= response_percent %>%;"></div>
