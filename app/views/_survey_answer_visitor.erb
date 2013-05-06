@@ -1,4 +1,3 @@
-<body>
   <div class='modal-popup modal-container'>
     <h2> Sign in </h2> 
     <form class="signin-visitor" action="/view/<%= survey.token%>" method="post">
@@ -8,7 +7,7 @@
     </form>
 
 
-    <form action="/view/<%=survey.token%>" method="Post"> 
+    <form class="signup-visitor" action="/view/<%=survey.token%>" method="Post"> 
       <h2> Sign up </h2> 
       <label for="signup-username">Username</label>
       <input id="signup-username" name="signup[username]" required="required" type="text" placeholder="mysuperusername690" />
@@ -19,9 +18,7 @@
       <label for="signup-password" class="youpasswd" data-icon="p">Password </label>
       <input id="signup-password" name="signup[password]" required="required" type="password" placeholder="eg. X8df!90EO"/>
 
-      <p class="signup button"> 
-        <input class="btn btn-primary" type="submit" value="Sign up"/> 
-      </p>
+      <button class="btn btn-primary" type="submit"/>Sign up</button>
     </form>
   </div>
-</body>
+

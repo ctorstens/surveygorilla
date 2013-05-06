@@ -66,17 +66,37 @@ $(document).ready(function() {
       url: '/signin',
       type: "get",
       data: $(this).serialize()}).done(function(){
-        $.ajax({type: "post",
+        $.ajax({
+          type: "post",
           data: $('form.view-survey-form').serialize(),
-          url: $("form.view-survey-form").attr('action')}).done(function(){
-            $.modal.close();
-            location.reload();
-          });
+          url: $("form.view-survey-form").attr('action')
+        }).done(function(){
+          $.modal.close();
+          location.reload();
         });
+      });
     });
+
+  $('form.signup-visitor').on('submit', function(e){
+    e.preventDefault();
+    $.ajax({
+      url: '/signup',
+      type: 'post',
+      data: $(this).serialize()
+    }).done(function (){
+      $.ajax({
+        type: 'post',
+        url: $('form.view-survey-form').attr('action'), 
+        data: $('form.view-survey-form').serialize()
+      }).done(function (){
+        $.modal.close();
+        location.reload();
+      });
+    });
+  });
+
+
 });
-
-
 
 
 
