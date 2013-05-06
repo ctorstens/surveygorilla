@@ -52,12 +52,31 @@ $(document).ready(function() {
     }
   });
 
+  $("input[name=submit-visitor]").on('click', function(e){
+    e.preventDefault();
+    $(".modal-popup").modal({onClose: function() {
+      $('.modal-container').remove();
+      $.modal.close();
+    }});
+  });
 
-
-
-
-
+  $('.signin-visitor').on('submit', function(e){
+    e.preventDefault();
+    $.ajax({
+      url: '/signin',
+      type: "get",
+      data: $(this).serialize()}).done(function(){
+        $.ajax({type: "post",
+          data: $('form.view-survey-form').serialize(),
+          url: $("form.view-survey-form").attr('action')}).done(function(){
+            $.modal.close();
+            location.reload();
+          });
+        });
+    });
 });
+
+
 
 
 

@@ -1,5 +1,3 @@
-
-
 get '/view/:token' do 
   @survey = Survey.find_by_token(params[:token])
   if @survey.live == false
@@ -15,15 +13,21 @@ get '/view/:token' do
 end 
 
 post '/view/:token' do
+  p params
   survey_id = Survey.find_by_token(params[:token]).id
   if Completion.create(taker_id: current_user.id, survey_id: survey_id).valid?
     mcq_responses = params[:options]
-    mcq_responses.each do |question_id, option_id|
-      Response.create(question_id: question_id, completion_id: Completion.last.id, option_id: option_id)
+    if mcq_responses
+      mcq_responses.each do |question_id, option_id|
+        Response.create(question_id: question_id, completion_id: Completion.last.id, option_id: option_id)
+      end
     end
+
     text_responses = params[:answers]
-    text_responses.each do |question_id, answer|
-      Response.create(question_id: question_id, completion_id: Completion.last.id, answer: answer)
+    if text_responses
+      text_responses.each do |question_id, answer|
+        Response.create(question_id: question_id, completion_id: Completion.last.id, answer: answer)
+      end
     end
   end
   redirect "/view/#{params[:token]}/survey_complete"

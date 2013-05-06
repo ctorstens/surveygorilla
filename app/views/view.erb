@@ -13,7 +13,7 @@ body  {
 
 <div class="container">
   <div class="row form-effects view-form span10 offset1">
-      <form class="span7 offset1" action="/view/<%= @survey.token %>" method='POST'>
+      <form class="span7 offset1 view-survey-form" action="/view/<%= @survey.token %>" method='POST'>
       <div>
         <div class="survey-title">
           <h2><%= @survey.title %> </h2>
@@ -41,10 +41,12 @@ body  {
           <% else %>
             <input name="submit-visitor" class="btn btn-primary offset5" type='submit' value='Done'/>
           <% end %>
-
       </div>
     </form>
   </div>
 </div>
 
+<div class='modal-popup'>
+  <%= partial(:_survey_answer_visitor, survey: @survey) %>
+</div>
 
