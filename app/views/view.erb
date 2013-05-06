@@ -13,34 +13,39 @@ body  {
 
 <div class="container">
   <div class="row form-effects view-form span10 offset1">
-      <form class="span7 offset1 view-survey-form" action="/view/<%= @survey.token %>" method='POST'>
+    <form class="span7 offset1 view-survey-form" action="/view/<%= @survey.token %>" method='POST'>
       <div>
         <div class="survey-title">
           <h2><%= @survey.title %> </h2>
           <p><%= @survey.description %></p></br>
+          <% if can? :update, @survey %>
+          <a href="/edit?type=survey&token=<%= @survey.token %>"><input type="button" class="btn btn-success" value="Edit"></a>
+          <% end %>
         </div>
-          <%@questions.each do |question|%>
-          <h4><%= "#{question.position}. #{question.title}" %></h4>
-            <p><%= "#{question.help_text}"%></p>
-            <% if current_user %>
-              <% if @completed%>
-                <%= partial(:_survey_answer_completed, question: question) %>
-              <% else %>
-                <%= partial(:_survey_answer, question: question) %>
-              <% end %>
-            <% else %>
-                <%= partial(:_survey_answer, question: question) %>
-            <% end %>
-            <br><br>
-          <% end %>
-
-          <% if current_user %>
-            <% unless @completed %>
-              <input name="submit-user" class="btn btn-primary offset5" type='submit' value='Done'/>
-            <% end %>
-          <% else %>
-            <input name="submit-visitor" class="btn btn-primary offset5" type='submit' value='Done'/>
-          <% end %>
+        <%@questions.each do |question|%>
+        <h4><%= "#{question.position}. #{question.title}" %></h4>
+        <p><%= "#{question.help_text}"%></p>
+        <% if current_user %>
+        <% if can? :update, @survey %>
+        <%= partial(:_survey_answer, question: question) %>
+        <a href="/edit?type=question&id=<%= question.id %>"><input type="button" class="btn btn-success" value="Edit"></a>
+        <% elsif @completed%>
+        <%= partial(:_survey_answer_completed, question: question) %>
+        <% else %>
+        <%= partial(:_survey_answer, question: question) %>
+        <% end %>
+        <% else %>
+        <%= partial(:_survey_answer, question: question) %>
+        <% end %>
+        <br><br>
+        <% end %>
+        <% if current_user %>
+        <% unless @completed %>
+        <input name="submit-user" class="btn btn-primary offset5" type='submit' value='Done'/>
+        <% end %>
+        <% else %>
+        <input name="submit-visitor" class="btn btn-primary offset5" type='submit' value='Done'/>
+        <% end %>
       </div>
     </form>
   </div>
@@ -49,4 +54,9 @@ body  {
 <div class='modal-popup'>
   <%= partial(:_survey_answer_visitor, survey: @survey) %>
 </div>
+
+
+
+
+
 
