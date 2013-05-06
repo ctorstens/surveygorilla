@@ -1,13 +1,14 @@
 <div class="survey-question-head"> 
   <div class="control-group">
     <label class="control-label" for="questions[][title]">Question</label>
-    <div class="controls"><input type="text" class="input-xlarge" name="questions[][title]"></div>
+    <div class="controls"><input type="text" class="input-xlarge" name="questions[][title]" value="<%= @question.title if @question %>"></div>
+
   </div>
 
   <div class="control-group">
     <label class="control-label" for="questions[][help_text]">Help Text</label>
     <div class="controls">
-      <textarea type="text" rows="2" class="input-xlarge" name="questions[][help_text]"></textarea>
+      <textarea type="text" rows="2" class="input-xlarge" name="questions[][help_text]"><%= @question.help_text if @question %></textarea>
     </div>
   </div>
 
@@ -15,10 +16,10 @@
     <label class="control-label" for="questions[][type]">Question Type</label>  
     <div class="controls">
       <select name="questions[][type]" class="survey-question-type">
-        <option value="MultipleChoice">Multiple Choice</option>
-        <option value="TextQuestion">Text Question</option>
+        <option value="MultipleChoice" <%= "selected" if @question && @question.type == "MultipleChoice" %>>Multiple Choice</option>
+        <option value="TextQuestion" <%= "selected" if @question && @question.type == "TextQuestion" %>>Text Question</option>
       </select>
     </div>
   </div>
-  
+  <input type="hidden" name="questions[][id]" value="<%= @question.id if @question %>">
 </div>

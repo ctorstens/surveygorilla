@@ -6,12 +6,16 @@ body  {
 
 <div class="survey container form-effects">
   <div class="row">
-    <form class="span8 offset2" action="/survey/create" method="post">
+    <form class="survey-form span8 offset2" action="/survey/create" method="post">
       <div class="form-horizontal">
         <%= erb :_survey_head, :layout => false %>
         <div class="widget-container"></div>
         <div class="control-group"><div class="controls"><button class="btn btn-inverse" id="add_question" type="button">Add a question</button></div></div>
-        <div class="controls"><input class="btn btn-primary" id="survey-submit" type="submit" value="Confirm"></div>
+        <div class="control-group">
+          <div class="controls">
+          <input class="btn btn-primary" id="survey-draft" name type="submit" value="Save Draft">
+                         or <input class="btn btn-success" id="survey-submit" type="submit" value="Launch Now"></div>
+                       </div>
       </div>
     </form>
   </div>
@@ -22,5 +26,6 @@ body  {
   <%= erb :_survey_question_mcq, :layout => false %>  
   <%= erb :_survey_question_mcq_q, :layout => false %>
   <%= erb :_survey_question_mcq_choices, :layout => false %>
-  <%= erb :_survey_question_tq_choices, :layout => false %> 
+  <%= erb :_survey_question_tq_choices, :layout => false %>
+  <input type='hidden' id="live-true" name='survey[live]' value='true'>
 </div>

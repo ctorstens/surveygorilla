@@ -1,0 +1,13 @@
+<form action="/edit/question" method="post">
+  <%= erb :_survey_question_head, :layout => false %>
+  
+  <% if @question.type == "MultipleChoice" %>
+  <ol>
+    <% MultipleChoice.find(@question.id).options.each do |option| %>
+    <% @option = option %>
+    <%= erb :_survey_question_mcq_q, :layout => false%>
+    <% end %>
+  </ol>
+  <% end %>
+  <input type="submit" class="btn btn-success" value="Confirm">
+</form>

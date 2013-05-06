@@ -1,6 +1,7 @@
 <div class="control-group survey-question-mcq-q unit">
   <div class="controls">
-   <li> <input type="text" name="questions[][options][]" placeholder="Options"></li>
-  </div>
+   <li> <input type="text" name="questions[][options][]" placeholder="Options" value="<%= @option.choice if @option %>"></li>
+   <input type="hidden" name="option_ids[]" placeholder="Options" value="<%= @option.id if @option %>">
+ </div>
 </div>
 

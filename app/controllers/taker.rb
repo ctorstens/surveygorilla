@@ -1,6 +1,8 @@
 get '/view/:token' do 
   @survey = Survey.find_by_token(params[:token])
-  if @survey.live == false
+  if @survey == nil
+    redirect to(404)
+  elsif cannot? :update, @survey and @survey.live == false
     redirect to(404)
   else
     @questions = @survey.questions.order('position')
@@ -38,5 +40,7 @@ get '/view/:token/survey_complete' do
 end
 
 error 404 do 
-  "what you talking jibba jabbba"
+  "The page is not found"
 end
+
+

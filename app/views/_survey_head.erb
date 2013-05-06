@@ -2,21 +2,21 @@
   <div class="control-group">
     <label class="control-label" for="survey[expiry_date]">Survey Title</label>
     <div class="controls">
-      <input id="survey-title" class="input-xlarge"  name="survey[title]" required="required" type="text"/>
+      <input id="survey-title" class="input-xlarge"  name="survey[title]" required="required" type="text" value="<%= @survey.title%>" />
     </div>
   </div>
 
   <div class="control-group">
     <label class="control-label" for="survey[expiry_date]">Form Description</label> 
     <div class="controls">
-      <input id="survey-description" class="input-xlarge" name="survey[description]" type="text"/>
+      <input id="survey-description" class="input-xlarge" name="survey[description]" type="text" value="<%= @survey.description%>"/>
     </div>
   </div>
 
   <div class="control-group">
     <label class="control-label" for="survey[expiry_date]">Expiry Date (Optional)</label> 
     <div class="controls">
-      <input id="survey-date-picker" class="input-xlarge" name="survey[expiry_date]" type="text"/>
+      <input id="survey-date-picker" class="input-xlarge" name="survey[expiry_date]" type="text" value="<%= @survey.expiry_date%>"/>
     </div>
   </div>
   <input id="survey-token" name="survey[token]" type="hidden" value="<%= @survey.token %>">

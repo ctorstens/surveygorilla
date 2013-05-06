@@ -4,9 +4,11 @@ $(document).ready(function() {
         copy:('fasf')
     });
 
+  $('#survey-submit').on('click',function(){
+      addItemTo('#live-true','div.widget-container');
+  });
 
-
-  $('form').on('submit',function(){
+  $('form.survey-form').on('submit',function(){
     var numOfQuestions= $('div.widget-container').children().length;
     for (var i=0; i<numOfQuestions; i++) {
       $('div.widget-container').children().eq(i).find('.survey-question-position').val((i+1));

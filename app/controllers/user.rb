@@ -2,11 +2,8 @@
 
 
 get '/profile' do
-  p "profile"
   @surveys = @current_user.surveys
   @live_surveys = @surveys.select { |survey| survey.live == true }
-  p "profile"
-  p @live_surveys
   @draft_surveys = @surveys.select { |survey| survey.live != true }
   erb :profile
 end
@@ -50,15 +47,38 @@ get '/analytics/:token' do
   erb :analytics
 end
 
-get '/edit/:token' do
-  @survey = Survey.find_by_token(params[:token])
-  @questions = @survey.questions
-  erb :edit
+get '/edit' do
+  if params[:type] == "survey"
+    @survey = Survey.find_by_token(params[:token])
+    erb :edit_survey
+  elsif params[:type] == "question"
+    @question = Question.find(params[:id])
+    erb :edit_question
+  end
 end
 
-post '/edit' do
-
+post '/edit/survey' do
+  survey = Survey.find_by_token(params[:survey][:token])
+  survey.update_attributes(params[:survey])
+  redirect to('/profile')
+  200
 end
+
+post '/edit/question' do
+  p params
+  questions = params[:questions][0]
+  question = Question.find(params[:questions][0]["id"])
+  question.update_attributes(title: questions["title"], help_text: questions["help_text"], type: questions["type"])
+  option_ids = params[:option_ids]
+  questions["options"].each_with_index do |choice, index| 
+    Option.find(option_ids[index]).update_attributes(choice: choice)
+  end
+  redirect to('/view/7cf60f52')
+  200
+end
+
+
+
 
 
 get '/launch' do
