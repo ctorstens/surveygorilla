@@ -4,7 +4,7 @@ end
 
 get '/' do
   redirect to('/profile') if @current_user
-  erb :index
+  erb :index, :layout => :index_layout
 end
 
 get '/signin' do
